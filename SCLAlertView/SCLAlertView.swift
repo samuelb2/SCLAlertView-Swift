@@ -42,14 +42,14 @@ public enum SCLActionType {
 
 // Button sub-class
 public class SCLButton: UIButton {
-    var actionType = SCLActionType.None
-    var target:AnyObject!
-    var selector:Selector!
-    var action:(()->Void)!
-    var customBackgroundColor:UIColor?
-    var customTextColor:UIColor?
-    var initialTitle:String!
-    var showDurationStatus:Bool=false
+    public var actionType = SCLActionType.None
+    public var target:AnyObject!
+    public var selector:Selector!
+    public var action:(()->Void)!
+    public var customBackgroundColor:UIColor?
+    public var customTextColor:UIColor?
+    public var initialTitle:String!
+    public var showDurationStatus:Bool=false
     
     public init() {
         super.init(frame: CGRectZero)
@@ -99,38 +99,38 @@ public typealias DismissBlock = () -> Void
 public class SCLAlertView: UIViewController {
     
     public struct SCLAppearance {
-        let kDefaultShadowOpacity: CGFloat
-        let kCircleTopPosition: CGFloat
-        let kCircleBackgroundTopPosition: CGFloat
-        let kCircleHeight: CGFloat
-        let kCircleIconHeight: CGFloat
-        let kTitleTop:CGFloat
-        let kTitleHeight:CGFloat
-        let kWindowWidth: CGFloat
-        var kWindowHeight: CGFloat
-        var kTextHeight: CGFloat
-        let kTextFieldHeight: CGFloat
-        let kTextViewdHeight: CGFloat
-        let kButtonHeight: CGFloat
-        let contentViewColor: UIColor
-        let contentViewBorderColor: UIColor
-        let titleColor: UIColor
+        public let kDefaultShadowOpacity: CGFloat
+        public let kCircleTopPosition: CGFloat
+        public let kCircleBackgroundTopPosition: CGFloat
+        public let kCircleHeight: CGFloat
+        public let kCircleIconHeight: CGFloat
+        public let kTitleTop:CGFloat
+        public let kTitleHeight:CGFloat
+        public let kWindowWidth: CGFloat
+        public var kWindowHeight: CGFloat
+        public var kTextHeight: CGFloat
+        public let kTextFieldHeight: CGFloat
+        public let kTextViewdHeight: CGFloat
+        public let kButtonHeight: CGFloat
+        public let contentViewColor: UIColor
+        public let contentViewBorderColor: UIColor
+        public let titleColor: UIColor
         
         // Fonts
-        let kTitleFont: UIFont
-        let kTextFont: UIFont
-        let kButtonFont: UIFont
+        public let kTitleFont: UIFont
+        public let kTextFont: UIFont
+        public let kButtonFont: UIFont
         
         // UI Options
-        var showCloseButton: Bool
-        var showCircularIcon: Bool
-        var shouldAutoDismiss: Bool // Set this false to 'Disable' Auto hideView when SCLButton is tapped
-        var contentViewCornerRadius : CGFloat
-        var fieldCornerRadius : CGFloat
-        var buttonCornerRadius : CGFloat
+        public var showCloseButton: Bool
+        public var showCircularIcon: Bool
+        public var shouldAutoDismiss: Bool // Set this false to 'Disable' Auto hideView when SCLButton is tapped
+        public var contentViewCornerRadius : CGFloat
+        public var fieldCornerRadius : CGFloat
+        public var buttonCornerRadius : CGFloat
         
         // Actions
-        var hideWhenBackgroundViewIsTapped: Bool
+        public var hideWhenBackgroundViewIsTapped: Bool
         
         public init(kDefaultShadowOpacity: CGFloat = 0.7, kCircleTopPosition: CGFloat = -12.0, kCircleBackgroundTopPosition: CGFloat = -15.0, kCircleHeight: CGFloat = 56.0, kCircleIconHeight: CGFloat = 20.0, kTitleTop:CGFloat = 30.0, kTitleHeight:CGFloat = 25.0, kWindowWidth: CGFloat = 240.0, kWindowHeight: CGFloat = 178.0, kTextHeight: CGFloat = 90.0, kTextFieldHeight: CGFloat = 45.0, kTextViewdHeight: CGFloat = 80.0, kButtonHeight: CGFloat = 45.0, kTitleFont: UIFont = UIFont.systemFontOfSize(20), kTextFont: UIFont = UIFont.systemFontOfSize(14), kButtonFont: UIFont = UIFont.boldSystemFontOfSize(14), showCloseButton: Bool = true, showCircularIcon: Bool = true, shouldAutoDismiss: Bool = true, contentViewCornerRadius: CGFloat = 5.0, fieldCornerRadius: CGFloat = 3.0, buttonCornerRadius: CGFloat = 3.0, hideWhenBackgroundViewIsTapped: Bool = false, contentViewColor: UIColor = UIColorFromRGB(0xFFFFFF), contentViewBorderColor: UIColor = UIColorFromRGB(0xCCCCCC), titleColor: UIColor = UIColorFromRGB(0x4D4D4D)) {
             
@@ -165,16 +165,16 @@ public class SCLAlertView: UIViewController {
             self.hideWhenBackgroundViewIsTapped = hideWhenBackgroundViewIsTapped
         }
         
-        mutating func setkWindowHeight(kWindowHeight:CGFloat) {
+        public mutating func setkWindowHeight(kWindowHeight:CGFloat) {
             self.kWindowHeight = kWindowHeight
         }
         
-        mutating func setkTextHeight(kTextHeight:CGFloat) {
+        public mutating func setkTextHeight(kTextHeight:CGFloat) {
             self.kTextHeight = kTextHeight
         }
     }
     
-    var appearance: SCLAppearance!
+    public var appearance: SCLAppearance!
     
     // UI Colour
     var viewColor = UIColor()
@@ -189,7 +189,7 @@ public class SCLAlertView: UIViewController {
     var baseView = UIView()
     var labelTitle = UILabel()
     var viewText = UITextView()
-    var contentView = UIView()
+    public var contentView = UIView()
     var circleBG = UIView(frame:CGRect(x:0, y:0, width:kCircleHeightBackground, height:kCircleHeightBackground))
     public var circleView = UIView()
     var circleIconView : UIView?
@@ -199,7 +199,7 @@ public class SCLAlertView: UIViewController {
     var dismissBlock : DismissBlock?
     private var inputs = [UITextField]()
     private var input = [UITextView]()
-    internal var buttons = [SCLButton]()
+    public var buttons = [SCLButton]()
     private var selfReference: SCLAlertView?
     
     public init(appearance: SCLAppearance) {
@@ -419,7 +419,7 @@ public class SCLAlertView: UIViewController {
         return btn
     }
     
-    private func addButton(title:String, backgroundColor:UIColor? = nil, textColor:UIColor? = nil, showDurationStatus:Bool=false)->SCLButton {
+    public func addButton(title:String, backgroundColor:UIColor? = nil, textColor:UIColor? = nil, showDurationStatus:Bool=false)->SCLButton {
         // Update view height
         appearance.setkWindowHeight(appearance.kWindowHeight + appearance.kButtonHeight)
         // Add button
